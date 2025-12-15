@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "WebFetch",
+      "WebSearch",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(rg:*)",
+      "Bash(mkdir:*)",
+      "Bash(cat:*)",
+      "Bash(curl:*)",
+      "Bash(paste:*)",
+      "Bash(bc:*)",
+      "Skill(research)",
+      "mcp__mcp-omnisearch__github_search",
+      "mcp__mcp-omnisearch__firecrawl_process",
+      "mcp__mcp-omnisearch__web_search",
+      "mcp__mcp-sqlite-tools__open_database",
+      "mcp__mcp-sqlite-tools__list_tables",
+      "mcp__mcp-sqlite-tools__describe_table",
+      "mcp__mcp-sqlite-tools__execute_read_query"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Bash(cat .env)",
+      "Bash(npm:*)",
+      "Bash(sqlite3:*)",
+      "Bash(git add:*)",
+      "AskUserQuestion"
+    ],
+    "ask": [
+      "Bash(rm:*)"
+    ],
+    "defaultMode": "default"
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/scott/.claude/hooks/skill-activation-forced-eval.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "alwaysThinkingEnabled": true
+}
